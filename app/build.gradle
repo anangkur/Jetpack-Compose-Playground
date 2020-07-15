@@ -65,4 +65,7 @@ dependencies {
     // ui test
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // other
+    implementation("io.coil-kt:coil:0.11.0")
 }

@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.ui.core.setContent
-import androidx.ui.graphics.imageFromResource
 import androidx.ui.res.vectorResource
 import com.anangkur.jetpackcomposeplayground.R
+import com.anangkur.jetpackcomposeplayground.ui.list.ListActivity
 
 class SplashActivity: AppCompatActivity() {
 
@@ -22,7 +22,7 @@ class SplashActivity: AppCompatActivity() {
 
         val handler = Handler()
         handler.postDelayed({
-
+            ListActivity.startActivity(this)
             finish()
         }, 1000)
     }
