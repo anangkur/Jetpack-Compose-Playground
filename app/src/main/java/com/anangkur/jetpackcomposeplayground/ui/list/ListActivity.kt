@@ -3,10 +3,12 @@ package com.anangkur.jetpackcomposeplayground.ui.list
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.ui.core.setContent
 import com.anangkur.jetpackcomposeplayground.R
+import com.anangkur.jetpackcomposeplayground.data.remote.NewsApi
+import com.anangkur.jetpackcomposeplayground.data.remote.RemoteRepository
 import com.anangkur.jetpackcomposeplayground.model.ListItem
 import com.anangkur.jetpackcomposeplayground.ui.detail.DetailActivity
 
@@ -18,22 +20,23 @@ class ListActivity : AppCompatActivity(), ListActionListener {
         }
     }
 
+    lateinit var viewModel: ListViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+        viewModel.repository = RemoteRepository(newsApi = NewsApi.getApiService)
+
         setContent {
-            listScreenContent(
+            liveDataComponent(
                 appTitle = getString(R.string.app_name),
-                data = listOf(
-                    ListItem(title = "Test 1", desc = "Desc Test 1", image = "https://picsum.photos/300/200"),
-                    ListItem(title = "Test 2", desc = "Desc Test 2", image = "https://picsum.photos/300/200"),
-                    ListItem(title = "Test 3", desc = "Desc Test 3", image = "https://picsum.photos/300/200"),
-                    ListItem(title = "Test 4", desc = "Desc Test 4", image = "https://picsum.photos/300/200"),
-                    ListItem(title = "Test 5", desc = "Desc Test 5", image = "https://picsum.photos/300/200")
-                ),
+                listItemLiveData = viewModel.news,
                 onClick = { listItem -> this.onClickItem(listItem) }
             )
         }
+
+        viewModel.getNews()
     }
 
     override fun onClickItem(data: ListItem) {

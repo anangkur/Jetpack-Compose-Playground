@@ -21,7 +21,7 @@ import androidx.compose.getValue
 import androidx.compose.onActive
 import androidx.compose.setValue
 import androidx.compose.state
-import com.anangkur.jetpackcomposeplayground.data.Result
+import com.anangkur.jetpackcomposeplayground.model.Result
 
 typealias RepositoryCall<T> = ((Result<T>) -> Unit) -> Unit
 
