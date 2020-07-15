@@ -25,11 +25,11 @@ class ListActivity : AppCompatActivity(), ListActionListener {
             listScreenContent(
                 appTitle = getString(R.string.app_name),
                 data = listOf(
-                    ListItem(title = "Test 1", desc = "Desc Test 1", image = "image test"),
-                    ListItem(title = "Test 2", desc = "Desc Test 2", image = "image test"),
-                    ListItem(title = "Test 3", desc = "Desc Test 3", image = "image test"),
-                    ListItem(title = "Test 4", desc = "Desc Test 4", image = "image test"),
-                    ListItem(title = "Test 5", desc = "Desc Test 5", image = "image test")
+                    ListItem(title = "Test 1", desc = "Desc Test 1", image = "https://picsum.photos/300/200"),
+                    ListItem(title = "Test 2", desc = "Desc Test 2", image = "https://picsum.photos/300/200"),
+                    ListItem(title = "Test 3", desc = "Desc Test 3", image = "https://picsum.photos/300/200"),
+                    ListItem(title = "Test 4", desc = "Desc Test 4", image = "https://picsum.photos/300/200"),
+                    ListItem(title = "Test 5", desc = "Desc Test 5", image = "https://picsum.photos/300/200")
                 ),
                 onClick = { listItem -> this.onClickItem(listItem) }
             )
