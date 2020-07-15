@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.ui.core.setContent
 import com.anangkur.jetpackcomposeplayground.R
 import com.anangkur.jetpackcomposeplayground.model.ListItem
+import com.anangkur.jetpackcomposeplayground.ui.detail.DetailActivity
 
 class ListActivity : AppCompatActivity(), ListActionListener {
 
@@ -24,11 +25,11 @@ class ListActivity : AppCompatActivity(), ListActionListener {
             listScreenContent(
                 appTitle = getString(R.string.app_name),
                 data = listOf(
-                    ListItem(title = "Test 1", desc = "Desc Test 1", image = ""),
-                    ListItem(title = "Test 2", desc = "Desc Test 2", image = ""),
-                    ListItem(title = "Test 3", desc = "Desc Test 3", image = ""),
-                    ListItem(title = "Test 4", desc = "Desc Test 4", image = ""),
-                    ListItem(title = "Test 5", desc = "Desc Test 5", image = "")
+                    ListItem(title = "Test 1", desc = "Desc Test 1", image = "image test"),
+                    ListItem(title = "Test 2", desc = "Desc Test 2", image = "image test"),
+                    ListItem(title = "Test 3", desc = "Desc Test 3", image = "image test"),
+                    ListItem(title = "Test 4", desc = "Desc Test 4", image = "image test"),
+                    ListItem(title = "Test 5", desc = "Desc Test 5", image = "image test")
                 ),
                 onClick = { listItem -> this.onClickItem(listItem) }
             )
@@ -36,6 +37,6 @@ class ListActivity : AppCompatActivity(), ListActionListener {
     }
 
     override fun onClickItem(data: ListItem) {
-        Toast.makeText(this, data.title, Toast.LENGTH_SHORT).show()
+        DetailActivity.startActivity(this, data)
     }
 }
