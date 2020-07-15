@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.anangkur.jetpackcomposeplayground.data
+package com.anangkur.jetpackcomposeplayground.model
 
 /**
  * A generic class that holds a value or an exception
