@@ -36,14 +36,13 @@ fun listItemScreenContent(
 fun bodyItemSection(title: String, desc: String) {
     Column(modifier = Modifier.padding(20.dp)) {
         Text(
-                modifier = Modifier.padding(top = 10.dp),
-                text = title,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.W600
+            text = title,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.W600
         )
         Text(
-                modifier = Modifier.padding(top = 8.dp),
-                text = desc
+            modifier = Modifier.padding(top = 8.dp),
+            text = desc
         )
     }
 }
