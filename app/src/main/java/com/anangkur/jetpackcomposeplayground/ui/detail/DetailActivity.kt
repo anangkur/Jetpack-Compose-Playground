@@ -35,8 +35,8 @@ class DetailActivity: AppCompatActivity() {
 
         val data = ListItem(
             title = intent.getStringExtra(EXTRA_DETAIL_TITLE) ?: "",
-            image = intent.getStringExtra(EXTRA_DETAIL_DESC) ?: "",
-            desc = intent.getStringExtra(EXTRA_DETAIL_IMAGE) ?: ""
+            image = intent.getStringExtra(EXTRA_DETAIL_IMAGE) ?: "",
+            desc = intent.getStringExtra(EXTRA_DETAIL_DESC) ?: ""
         )
 
         setContent {

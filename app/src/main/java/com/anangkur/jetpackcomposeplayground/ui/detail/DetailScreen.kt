@@ -1,8 +1,12 @@
 package com.anangkur.jetpackcomposeplayground.ui.detail
 
+import android.graphics.Bitmap
 import androidx.compose.Composable
+import androidx.ui.core.Alignment
+import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
+import androidx.ui.graphics.asImageAsset
 import androidx.ui.layout.fillMaxWidth
 import androidx.ui.layout.height
 import androidx.ui.layout.padding
@@ -16,6 +20,8 @@ import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import com.anangkur.jetpackcomposeplayground.R
 import com.anangkur.jetpackcomposeplayground.model.ListItem
+import com.anangkur.jetpackcomposeplayground.state.UiState
+import com.anangkur.jetpackcomposeplayground.utils.loadPicture
 
 @Composable
 fun detailScreenContent(
@@ -36,10 +42,18 @@ fun detailScreenContent(
         },
         bodyContent = {
             VerticalScroller {
-                Image(
-                    asset = vectorResource(R.drawable.ic_baseline_adb_24),
-                    modifier = Modifier.fillMaxWidth().height(200.dp)
-                )
+                val loadPictureState = loadPicture(data.image)
+                if (loadPictureState is UiState.Success<Bitmap>)
+                    Image(
+                        modifier = Modifier.fillMaxWidth().height(200.dp),
+                        contentScale = ContentScale.Crop,
+                        asset = loadPictureState.data.asImageAsset()
+                    )
+                else
+                    Text(
+                        modifier = Modifier.fillMaxWidth().height(200.dp).gravity(align = Alignment.CenterHorizontally),
+                        text = "Loading..."
+                    )
                 Box(
                     modifier = Modifier.padding(20.dp),
                     children = {
