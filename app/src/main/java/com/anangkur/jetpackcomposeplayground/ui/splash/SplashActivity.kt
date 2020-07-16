@@ -16,7 +16,7 @@ class SplashActivity: AppCompatActivity() {
         setContent {
             splashScreenContent(
                 appTitle = getString(R.string.app_name),
-                imageAsset = vectorResource(R.drawable.ic_baseline_adb_24)
+                imageAsset = vectorResource(R.drawable.ic_baseline_android_24)
             )
         }
 
