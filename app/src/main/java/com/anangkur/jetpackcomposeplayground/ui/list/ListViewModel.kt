@@ -16,19 +16,23 @@ class ListViewModel: ViewModel() {
 
     private val listItemMapper = ListItemMapper()
 
-    private val _news = MutableLiveData<Result<List<ArticleModel>>>()
-    val news: LiveData<List<ListItem>> = _news.map {
-        if (it.succeeded) {
-            it.successOr(emptyList()).map { item -> listItemMapper.mapToUiModel(item) }
-        } else {
-            emptyList()
-        }
+    private val _news = MutableLiveData<List<ArticleModel>>()
+    val news: LiveData<List<ListItem>> = _news.map { list ->
+        list.map { listItemMapper.mapToUiModel(it) }
     }
 
     fun getNews() {
         viewModelScope.launch {
-            repository.getNews {
-                _news.postValue(it)
+            try {
+                val response = repository.getNews()
+                if (response.status == "ok") {
+                    _news.postValue(response.articles)
+                } else {
+                    _news.postValue(emptyList())
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _news.postValue(emptyList())
             }
         }
     }
