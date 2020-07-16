@@ -14,8 +14,8 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-![](app/src/main/res/drawable/screenshot_detail.png)
-![](app/src/main/res/drawable/list.png)
+<img src="app/src/main/res/drawable/screenshot_detail.png" width="200">
+<img src="app/src/main/res/drawable/screenshot_list.png" width="200">
 
 <!-- PROJECT LOGO -->
 <br />
