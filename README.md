@@ -31,6 +31,10 @@
     <img src="app/src/main/res/drawable/screenshot_detail.png" width="200"> <img src="app/src/main/res/drawable/screenshot_list.png" width="200">
 </p>
 
+<p align="center">
+    the data used in this project comes from <a href="https://newsapi.org/">News Api</a>
+</p>
+
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
@@ -51,6 +55,7 @@
 * [Retrofit](https://square.github.io/retrofit/)
 * [Okhttp](https://square.github.io/okhttp/)
 * [Gson](https://github.com/google/gson)
+* [News Api](https://newsapi.org/)
 
 <!-- CONTRIBUTING -->
 ## Contributing
