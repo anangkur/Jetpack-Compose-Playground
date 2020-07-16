@@ -20,12 +20,14 @@ class DetailActivity: AppCompatActivity() {
         private const val EXTRA_DETAIL_TITLE = "extra-detail-title"
         private const val EXTRA_DETAIL_DESC = "extra-detail-desc"
         private const val EXTRA_DETAIL_IMAGE = "extra-detail-image"
+        private const val EXTRA_DETAIL_AUTHOR = "extra-detail-author"
 
         fun startActivity(context: Context, data: ListItem) {
             context.startActivity(Intent(context, DetailActivity::class.java).apply {
                 putExtra(EXTRA_DETAIL_TITLE, data.title)
                 putExtra(EXTRA_DETAIL_DESC, data.desc)
                 putExtra(EXTRA_DETAIL_IMAGE, data.image)
+                putExtra(EXTRA_DETAIL_AUTHOR, data.author)
             })
         }
     }
@@ -36,12 +38,13 @@ class DetailActivity: AppCompatActivity() {
         val data = ListItem(
             title = intent.getStringExtra(EXTRA_DETAIL_TITLE) ?: "",
             image = intent.getStringExtra(EXTRA_DETAIL_IMAGE) ?: "",
-            desc = intent.getStringExtra(EXTRA_DETAIL_DESC) ?: ""
+            desc = intent.getStringExtra(EXTRA_DETAIL_DESC) ?: "",
+            author = intent.getStringExtra(EXTRA_DETAIL_AUTHOR) ?: ""
         )
 
         setContent {
             detailScreenContent(
-                screenTitle = data.title,
+                screenTitle = data.author,
                 onNavigationClick = { onBackPressed() },
                 data = data
             )

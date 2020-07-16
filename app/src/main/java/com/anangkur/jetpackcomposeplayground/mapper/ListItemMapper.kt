@@ -8,7 +8,8 @@ class ListItemMapper: Mapper<ListItem, ArticleModel> {
         return ListItem(
             title = data.title ?: "",
             desc = data.content ?: "",
-            image = data.urlToImage ?: ""
+            image = data.urlToImage ?: "",
+            author = data.author ?: ""
         )
     }
 }
