@@ -7,8 +7,7 @@ import com.anangkur.jetpackcomposeplayground.mapper.ListItemMapper
 import com.anangkur.jetpackcomposeplayground.model.ListItem
 import kotlinx.coroutines.launch
 import com.anangkur.jetpackcomposeplayground.model.Result
-import com.anangkur.jetpackcomposeplayground.model.succeeded
-import com.anangkur.jetpackcomposeplayground.model.successOr
+import com.anangkur.jetpackcomposeplayground.model.error
 
 class ListViewModel: ViewModel() {
 
@@ -20,9 +19,13 @@ class ListViewModel: ViewModel() {
 
     private val listItemMapper = ListItemMapper()
 
-    private val _news = MutableLiveData<List<ArticleModel>>()
-    val news: LiveData<List<ListItem>> = _news.map { list ->
-        list.map { listItemMapper.mapToUiModel(it) }
+    private val _news = MutableLiveData<Result<List<ArticleModel>>>()
+    val news: LiveData<Result<List<ListItem>>> = _news.map { result ->
+        if (result is Result.Success) {
+            Result.Success(result.data.map { listItemMapper.mapToUiModel(it) })
+        } else {
+            Result.Error(result.error())
+        }
     }
 
     fun getNews() {
@@ -30,13 +33,13 @@ class ListViewModel: ViewModel() {
             try {
                 val response = repository.getNews()
                 if (response.status == RESPONSE_OK) {
-                    _news.postValue(response.articles)
+                    _news.postValue(Result.Success(response.articles))
                 } else {
-                    _news.postValue(emptyList())
+                    _news.postValue(Result.Error(IllegalArgumentException(response.message)))
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
-                _news.postValue(emptyList())
+                _news.postValue(Result.Error(e))
             }
         }
     }

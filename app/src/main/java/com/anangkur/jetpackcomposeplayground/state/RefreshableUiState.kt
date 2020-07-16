@@ -68,6 +68,9 @@ fun <T> refreshableUiStateFrom(
                 is Result.Error -> RefreshableUiState.Error(
                     exception = result.exception, previousData = state.currentData
                 )
+                is Result.Loading -> RefreshableUiState.Success(
+                    data = state.currentData, loading = true
+                )
             }
         }
     }
@@ -89,4 +92,11 @@ val <T> RefreshableUiState<T>.currentData: T?
     get() = when (this) {
         is RefreshableUiState.Success -> this.data
         is RefreshableUiState.Error -> this.previousData
+    }
+
+val <T> RefreshableUiState<T>.error: Exception?
+    get() = if(this is RefreshableUiState.Error) {
+        this.exception
+    } else {
+        null
     }

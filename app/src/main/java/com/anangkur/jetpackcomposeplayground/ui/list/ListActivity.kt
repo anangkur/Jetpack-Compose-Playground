@@ -5,11 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.map
 import androidx.ui.core.setContent
 import com.anangkur.jetpackcomposeplayground.R
 import com.anangkur.jetpackcomposeplayground.data.remote.NewsApi
 import com.anangkur.jetpackcomposeplayground.data.remote.RemoteRepository
 import com.anangkur.jetpackcomposeplayground.model.ListItem
+import com.anangkur.jetpackcomposeplayground.model.succeeded
+import com.anangkur.jetpackcomposeplayground.model.successOr
 import com.anangkur.jetpackcomposeplayground.ui.detail.DetailActivity
 
 class ListActivity : AppCompatActivity(), ListActionListener {

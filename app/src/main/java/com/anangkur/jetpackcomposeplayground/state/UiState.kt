@@ -51,6 +51,7 @@ fun <T> uiStateFrom(
             state = when (result) {
                 is Result.Success -> UiState.Success(result.data)
                 is Result.Error -> UiState.Error(result.exception)
+                is Result.Loading -> UiState.Loading
             }
         }
     }
