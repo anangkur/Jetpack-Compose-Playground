@@ -14,9 +14,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-<img src="app/src/main/res/drawable/screenshot_detail.png" width="200">
-<img src="app/src/main/res/drawable/screenshot_list.png" width="200">
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -28,6 +25,10 @@
   <p align="center">
     This is a project of me playing with <a href="https://developer.android.com/jetpack/compose">Jetpack Compose</a>.
   </p>
+</p>
+
+<p align="center">
+    <img src="app/src/main/res/drawable/screenshot_detail.png" width="200"> <img src="app/src/main/res/drawable/screenshot_list.png" width="200">
 </p>
 
 <!-- TABLE OF CONTENTS -->
