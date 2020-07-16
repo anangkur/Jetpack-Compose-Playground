@@ -29,9 +29,9 @@ class ListActivity : AppCompatActivity(), ListActionListener {
         viewModel.repository = RemoteRepository(newsApi = NewsApi.getApiService)
 
         setContent {
-            liveDataComponent(
+            refreshableStateComponent(
                 appTitle = getString(R.string.app_name),
-                listItemLiveData = viewModel.news,
+                viewModel = viewModel,
                 onClick = { listItem -> this.onClickItem(listItem) }
             )
         }
