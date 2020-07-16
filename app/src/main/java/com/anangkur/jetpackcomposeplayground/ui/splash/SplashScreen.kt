@@ -16,6 +16,7 @@ import androidx.ui.layout.fillMaxSize
 import androidx.ui.layout.padding
 import androidx.ui.material.Scaffold
 import androidx.ui.res.vectorResource
+import androidx.ui.text.font.FontWeight
 import androidx.ui.text.style.TextAlign
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
@@ -36,11 +37,11 @@ fun splashScreenContent(
             ) {
                 Image(asset = imageAsset)
                 Text(
-                    modifier = Modifier.padding(top = 20.dp, start = 20.dp, end = 20.dp),
+                    modifier = Modifier.padding(start = 80.dp, end = 80.dp),
                     text = appTitle,
                     fontSize = 24.sp,
-                    color = Color(R.color.colorPrimary),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.W600
                 )
             }
         }
@@ -52,6 +53,6 @@ fun splashScreenContent(
 fun previewSplashContent() {
     splashScreenContent(
         appTitle = ContextAmbient.current.getString(R.string.app_name),
-        imageAsset = vectorResource(id = R.drawable.ic_baseline_adb_24)
+        imageAsset = vectorResource(id = R.drawable.ic_baseline_android_24)
     )
 }
