@@ -1,12 +1,13 @@
 package com.anangkur.jetpackcomposeplayground.ui.detail
 
-import android.graphics.Bitmap
 import androidx.compose.Composable
+import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.VerticalScroller
-import androidx.ui.graphics.asImageAsset
+import androidx.ui.layout.fillMaxWidth
+import androidx.ui.layout.height
 import androidx.ui.layout.padding
 import androidx.ui.material.Scaffold
 import androidx.ui.text.font.FontWeight
@@ -14,8 +15,8 @@ import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import com.anangkur.jetpackcomposeplayground.model.ListItem
-import com.anangkur.jetpackcomposeplayground.state.UiState
-import com.anangkur.jetpackcomposeplayground.utils.*
+import com.anangkur.jetpackcomposeplayground.utils.topAppBarWithBack
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun detailScreenContent(
@@ -29,7 +30,11 @@ fun detailScreenContent(
         },
         bodyContent = {
             VerticalScroller {
-                imageSection(imageUrl = data.image)
+                CoilImage(
+                    modifier = Modifier.fillMaxWidth().height(200.dp),
+                    data = data.image,
+                    contentScale = ContentScale.Crop
+                )
                 contentSection(title = data.title, desc = data.desc)
             }
         }

@@ -1,11 +1,13 @@
 package com.anangkur.jetpackcomposeplayground.ui.list
 
 import androidx.compose.Composable
+import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.clickable
 import androidx.ui.layout.Column
 import androidx.ui.layout.fillMaxWidth
+import androidx.ui.layout.height
 import androidx.ui.layout.padding
 import androidx.ui.material.Card
 import androidx.ui.material.Scaffold
@@ -15,6 +17,7 @@ import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import com.anangkur.jetpackcomposeplayground.model.ListItem
 import com.anangkur.jetpackcomposeplayground.utils.imageSection
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun listItemScreenContent(
@@ -26,7 +29,11 @@ fun listItemScreenContent(
         elevation = 4.dp
     ) {
         Column {
-            imageSection(imageUrl = data.image)
+            CoilImage(
+                modifier = Modifier.fillMaxWidth().height(200.dp),
+                data = data.image,
+                contentScale = ContentScale.Crop
+            )
             bodyItemSection(title = data.title, desc = data.desc)
         }
     }
