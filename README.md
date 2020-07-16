@@ -14,6 +14,9 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
+![](app/src/main/res/drawable/screenshot_detail.png)
+![](app/src/main/res/drawable/list.png)
+
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
